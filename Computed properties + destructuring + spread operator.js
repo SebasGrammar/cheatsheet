@@ -15,10 +15,23 @@ let newTest = test.map(({score}) => {
 
 let mix = [...test, ...newTest]
 
-let a = 5, b = 2;
+/* ---- */
+
+let nestedObjects = {
+  first: {
+    second: {
+      third: [1, 2, 3]
+    }
+  }
+}
+
+let {first: {second: {third: destructuredThird}}} = nestedObjects
+console.log(destructuredThird)
+
 
 // Swapping variables with destructuring
 
+let a = 5, b = 2;
 [a, b] = [b, a]
 
 // Destructuring + rest syntax

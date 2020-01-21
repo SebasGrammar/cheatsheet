@@ -47,7 +47,7 @@ console.log(value)
 // It is also possible to use multiple conditions with ternary operators. This is not recommended, though, because such expressions are considerably more difficult to read.
 value == false ? console.log("False") : value == undefined ? console.log("Undefined") : console.log("True")
 
-// Arrow functions  and default parameters
+// Arrow functions and default parameters
 
 const log = (argument) => {console.log(argument)}
 const returnValue = (value = 5) => value * 2

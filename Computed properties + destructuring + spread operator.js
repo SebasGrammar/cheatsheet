@@ -43,4 +43,20 @@ log(test)
 log( returnValue(2) )
 log ( returnValue() )
 
+// Template literals
+
+let firstString = "The lion"
+
+function concatenateString(initialString, words) {
+  for (let word of words) {
+    initialString = `${initialString} and the friendly ${word}`
+    console.log(initialString)
+  }
+  // return initialString
+}
+
+console.log(concatenateString(firstString, ["dog", "cat", "crocodile"]))
+
+console.log(firstString) // No side effects
+
 // https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/

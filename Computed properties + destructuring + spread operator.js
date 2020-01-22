@@ -121,14 +121,43 @@ const objectFromConstructor = new CreateObject("Object from constructor")
 objectFromConstructor.log()
 objectFromConstructor.arrowLog()
 
-// Spread syntax will only take you as far
+// Spread syntax will only take you so far when it comes to cloning an array/object. (1 level deep)
+// so how do you clone multidimensional arrays with the spread syntax?
 
-let deepArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+let deepArray = [[3, 2, 1], [6, 5, 4], [9, 8, 7]]
+let newDeepArray = [...deepArray]
 
-console.log(deepArray)
+// newDeepArray.forEach(array => array.sort((a, b) => a - b))
+//newDeepArray.forEach((...array) => array.sort((a, b) => a - b))
 
-for (let array of [...deepArray]) {
-  [...array].length = 2
+for (let array of newDeepArray) {
+  array.sort((a, b) => {return a - b})
 }
 
-console.log(deepArray)
+console.log(newDeepArray)
+console.log(deepArray) // OOPS!
+
+// -- (1) -- // 
+
+const multiArray = [[3, 2, 1], [6, 5, 4], [9, 8, 7]]
+const newMultiArray = []
+
+for (let array of multiArray) {
+  newMultiArray.push([...array])
+}
+
+for (let array of newMultiArray) {
+  array.sort((a, b) => a - b)
+}
+
+console.log(multiArray)
+console.log(newMultiArray)
+
+// -- (2) -- //
+
+// I found this one on an article by Samantha Ming:
+
+const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
+const multidimensionalArray = clone(multiArray)
+console.log(multiArray)
+console.log(multidimensionalArray.map(item => item.sort((a, b) => a - b)))

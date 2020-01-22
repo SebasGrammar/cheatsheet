@@ -73,3 +73,62 @@ console.log(concatenateString(firstString, ["dog", "cat", "crocodile"]))
 console.log(firstString) // No side effects
 
 // https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/
+
+// ------------------------------------------------------------------------------------------- //
+
+// Arrow functions don't have their own this, but use that of the enclosing lexical scope.
+// As a result, their "this" cannot be rebound via methods such as bind, call and apply.
+
+const testObject = {
+  name: "Test object"
+}
+
+function goodOldFunction() {
+  console.log(this)
+}
+
+goodOldFunction.call(testObject)
+testObject.logThis = goodOldFunction;
+testObject.logThis()
+
+// ---- //
+
+const arrowFunction = () => console.log(this)
+
+arrowFunction.call(testObject)
+testObject["arrowFunction"] = arrowFunction
+testObject.arrowFunction()
+
+// The same happens with constructor functions and classes
+
+function CreateObject(name) {
+  this.name = name;
+  // THESE WORK!
+  // this.log = function() {
+  //   console.log(this.name)
+  // };
+  // this.arrowLog = () => {
+  //   console.log(this.name)
+  // }
+}
+
+CreateObject.prototype.log = function() {console.log(this)}
+// THIS ONE DOESN'T WORK!
+// I was born in the window object x_x
+CreateObject.prototype.arrowLog = arrowLog = () => {console.log(this)}
+
+const objectFromConstructor = new CreateObject("Object from constructor")
+objectFromConstructor.log()
+objectFromConstructor.arrowLog()
+
+// Spread syntax will only take you as far
+
+let deepArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+console.log(deepArray)
+
+for (let array of [...deepArray]) {
+  [...array].length = 2
+}
+
+console.log(deepArray)

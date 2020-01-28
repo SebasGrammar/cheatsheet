@@ -72,8 +72,6 @@ console.log(concatenateString(firstString, ["dog", "cat", "crocodile"]))
 
 console.log(firstString) // No side effects
 
-// https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/
-
 // ------------------------------------------------------------------------------------------- //
 
 // Arrow functions don't have their own this, but use that of the enclosing lexical scope.
@@ -143,7 +141,7 @@ const multiArray = [[3, 2, 1], [6, 5, 4], [9, 8, 7]]
 const newMultiArray = []
 
 for (let array of multiArray) {
-  newMultiArray.push([...array])
+  newMultiArray.push([...array]) // Far from efficient. Not dynamic.
 }
 
 for (let array of newMultiArray) {

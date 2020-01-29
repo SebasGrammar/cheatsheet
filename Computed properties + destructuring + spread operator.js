@@ -3,10 +3,14 @@ let test = [{score: 3}, {score: 2}, {score: 1}]
 // Preventing side effects by spreading the array in question.
 
 console.log([...test].sort((a, b) => {return a.score - b.score}))
+console.log(test)
 
-// Object destructuring + computed properties
+// Object destructuring and computed properties
 
-let newTest = test.map(({score}) => {
+let [{score: firstScore}] = test;
+console.log(`First score: ${firstScore}`)
+
+let newTest = test.map(({score}) => { // ({score}) vs (score) -> in (1) we are destructuring the property "score". in (2) we would just be iterating over the array.
   return {
     [score]: score * 2,
     "score": score * 2

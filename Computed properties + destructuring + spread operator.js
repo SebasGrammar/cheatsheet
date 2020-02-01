@@ -31,21 +31,26 @@ let person = {
   },
   updateInfo(value) {
     this.info = value
+  },
+  updateDetails(value) {
+    for (detail in value) {
+      this.info[detail] = value[detail]
+    }
   }
 }
 
 let {name, age} = person.getInfo();
 name = "Bart Simpson"
-age = 10
+age = 15
 person.updateInfo({name, age})
-
 console.log(person.getInfo())
-
+person.updateDetails({age: 10})
+console.log(person.getInfo())
 /******/
 
-// let o = {a: 1}
-// let {a} = o;
-// let po = {a}
+// let variable = {value: 1}
+// let {value} = object; -> object
+// let objectA = {value}
 
 /* ---- */
 

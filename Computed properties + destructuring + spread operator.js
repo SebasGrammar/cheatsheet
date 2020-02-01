@@ -19,6 +19,34 @@ let newTest = test.map(({score}) => { // ({score}) vs (score) -> in (1) we are d
 
 let mix = [...test, ...newTest]
 
+/*****************************/
+
+let person = {
+  info: {
+    name: "Homer Simpson",
+    age: 39,
+  },
+  getInfo() {
+    return this.info
+  },
+  updateInfo(value) {
+    this.info = value
+  }
+}
+
+let {name, age} = person.getInfo();
+name = "Bart Simpson"
+age = 10
+person.updateInfo({name, age})
+
+console.log(person.getInfo())
+
+/******/
+
+// let o = {a: 1}
+// let {a} = o;
+// let po = {a}
+
 /* ---- */
 
 let nestedObjects = {

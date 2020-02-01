@@ -12,7 +12,7 @@ console.log(`First score: ${firstScore}`)
 
 let newTest = test.map(({score}) => { // ({score}) vs (score) -> in (1) we are destructuring the property "score". in (2) we would just be iterating over the array.
   return {
-    [score]: score * 2,
+    [score]: score * 2, // -> computed property
     "score": score * 2
   }
 })
@@ -62,9 +62,9 @@ let nestedObjects = {
   }
 }
 
-let {first: {second: {third: destructuredThird}}} = nestedObjects
+let {first: {second: {third: destructuredThird}}} = nestedObjects // destructure this into a variable called,
+// not third, but destructuredThird.
 console.log(destructuredThird)
-
 
 // Swapping variables with destructuring
 
@@ -91,7 +91,8 @@ const returnValue = (value = 5) => value * 2
 
 log(test)
 log( returnValue(2) )
-log ( returnValue() )
+log ( returnValue() ) // Unless you pass an argument to this function, it'll be called with 5
+// as the default value.
 
 // Template literals
 
@@ -111,7 +112,7 @@ console.log(firstString) // No side effects
 
 // ------------------------------------------------------------------------------------------- //
 
-// Arrow functions don't have their own this, but use that of the enclosing lexical scope.
+// Arrow functions don't have their own this, but use that of the enclosing LEXICAL SCOPE.
 // As a result, their "this" cannot be rebound via methods such as bind, call and apply.
 
 const testObject = {
@@ -149,7 +150,7 @@ function CreateObject(name) {
 
 CreateObject.prototype.log = function() {console.log(this)}
 // THIS ONE DOESN'T WORK!
-// I was born in the window object x_x
+// I was born in the window object x_x // non-strict, undefined in strict-mode.
 CreateObject.prototype.arrowLog = arrowLog = () => {console.log(this)}
 
 const objectFromConstructor = new CreateObject("Object from constructor")

@@ -19,6 +19,16 @@ let newTest = test.map(({score}) => { // ({score}) vs (score) -> in (1) we are d
 
 let mix = [...test, ...newTest]
 
+// Object destructuring + default parameters
+
+function log({size = null} = {}) {
+  console.log(size)
+}
+
+log()
+log({})
+log({size: 20})
+
 /*****************************/
 
 let person = {

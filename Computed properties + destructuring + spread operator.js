@@ -207,3 +207,20 @@ const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : i
 const multidimensionalArray = clone(multiArray)
 console.log(multiArray)
 console.log(multidimensionalArray.map(item => item.sort((a, b) => a - b)))
+
+/*************************************************/
+
+class Person {
+  constructor(name) {
+      this.name = name
+  }
+}
+
+let sebas = new Person("Sebastian")
+let sebasClone = sebas
+sebasClone = {}
+console.log(sebas) // sebas -> Person {name: "Sebastian"}
+// BUT!
+sebasClone = sebas
+sebasClone.name = "Sebas"
+console.log(sebas) // sebas -> Person {name: "Sebas"}

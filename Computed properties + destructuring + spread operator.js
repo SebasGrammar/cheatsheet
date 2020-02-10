@@ -224,3 +224,8 @@ console.log(sebas) // sebas -> Person {name: "Sebastian"}
 sebasClone = sebas
 sebasClone.name = "Sebas"
 console.log(sebas) // sebas -> Person {name: "Sebas"}
+
+// Javascript is a pass by value language
+
+// https://www.tutorialspoint.com/explain-javascript-pass-by-value-in-javascript
+// https://news.ycombinator.com/item?id=16233785

@@ -19,6 +19,26 @@ let newTest = test.map(({score}) => { // ({score}) vs (score) -> in (1) we are d
 
 let mix = [...test, ...newTest]
 
+// There are cases when a function calls for multiple arguments.
+// We can use an array and use destructuring to use its items
+// as arguments.
+
+let test = [1, 2, 3]
+
+function printArguments(arr) {
+  console.log(...arr)
+}
+
+printArguments(test)
+
+console.log(...test)
+
+/* */
+
+let numbersToTest = [1, 2, 3, 4, 5]
+
+console.log(Math.max(...numbersToTest))
+
 // Object destructuring + default parameters
 
 function log({size = null} = {}) {
